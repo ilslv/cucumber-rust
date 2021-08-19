@@ -152,7 +152,7 @@
     When a user types in the correct username but incorrect password
     Then the user will see a messagebox with an alert that their password is wrong
 </code></pre>
-<p>These features are agnostic to the implementation, the only requirement is that they follow the expected format of phrases followed by the keywords (&quot;Given&quot;, &quot;When&quot;, &quot;Then&quot;). Gherkin offers support for languages other than English, as well.</p>
+<p>These features are agnostic to the implementation, the only requirement is that they follow the expected format of phrases followed by the keywords (<code>Given</code>, <code>When</code>, <code>Then</code>). Gherkin offers support for languages other than English, as well.</p>
 <p>Cucumber implementations then simply hook into these keywords and execute the logic that corresponds to the keywords. <code>cucumber-rust</code> is one such implementation and is the subject of this book.</p>
 <pre><code class="language-rust ignore">#[given(&quot;a user portal where one can login&quot;)]
 fn portal(w: &amp;mut World) {

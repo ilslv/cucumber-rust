@@ -153,7 +153,7 @@
     When a user types in the correct username but incorrect password
     Then the user will see a messagebox with an alert that their password is wrong
 </code></pre>
-<p>These features are agnostic to the implementation, the only requirement is that they follow the expected format of phrases followed by the keywords (&quot;Given&quot;, &quot;When&quot;, &quot;Then&quot;). Gherkin offers support for languages other than English, as well.</p>
+<p>These features are agnostic to the implementation, the only requirement is that they follow the expected format of phrases followed by the keywords (<code>Given</code>, <code>When</code>, <code>Then</code>). Gherkin offers support for languages other than English, as well.</p>
 <p>Cucumber implementations then simply hook into these keywords and execute the logic that corresponds to the keywords. <code>cucumber-rust</code> is one such implementation and is the subject of this book.</p>
 <pre><code class="language-rust ignore">#[given(&quot;a user portal where one can login&quot;)]
 fn portal(w: &amp;mut World) {
@@ -250,8 +250,8 @@ fn main() {
 </code></pre></pre>
 <p>If you run this, you should see an output like:</p>
 <p><a href="https://asciinema.org/a/DRnrcYrvPjRslamD1O1TxYxAc"><img src="https://asciinema.org/a/DRnrcYrvPjRslamD1O1TxYxAc.svg" alt="Cucumber run with just the Given step" /></a></p>
-<p>You will see a checkmark next to &quot;Given A hungry cat&quot;, which means that test step has been matched and executed.</p>
-<p>But then for the next step: &quot;I feed the cat&quot;, there is a &quot;? ... (skipped)&quot;. This is because we have nothing in our steps that matches this sentence. The remaining steps in the scenario, since they depend on this skipped one, are not looked at all.</p>
+<p>You will see a checkmark next to <code>Given A hungry cat</code>, which means that test step has been matched and executed.</p>
+<p>But then for the next step: <code>I feed the cat</code>, there is a <code>? ... (skipped)</code>. This is because we have nothing in our steps that matches this sentence. The remaining steps in the scenario, since they depend on this skipped one, are not looked at all.</p>
 <p>There are 3 types of steps:</p>
 <ul>
 <li><code>given</code>, which is for defining the starting conditions and often initializing the data in the <code>World</code></li>
@@ -259,7 +259,7 @@ fn main() {
 <li><code>then</code>, to validate that the <code>World</code> has changed the way we would expect</li>
 </ul>
 <p>These various <code>Step</code> functions are executed to transform the world. As such, mutable reference to the world must always be passed in. The step itself is also made available.</p>
-<p>The steps functions take a string, which is the name of the given <code>Step</code> (i.e., the literal string, such as &quot;A hungry cat&quot;), and then a function closure that takes a <code>World</code> and then the <code>Step</code> itself. </p>
+<p>The steps functions take a string, which is the name of the given <code>Step</code> (i.e., the literal string, such as <code>A hungry cat</code>), and then a function closure that takes a <code>World</code> and then the <code>Step</code> itself. </p>
 <p>It can also take regex like that:</p>
 <pre><code class="language-rust ignore">#[given(regex = r&quot;^A hungry (\S+)$&quot;)]
 fn hungry_someone(world: &amp;mut AnimalWorld, who: String) {
@@ -322,7 +322,7 @@ fn hungry_cat(world: &amp;mut AnimalWorld, state: String) {
 <p>We surround regex with <code>^..$</code> to unsure <strong>exact</strong> match. This is much more useful as you add more and more steps, so they wouldn't interfere with each other.</p>
 <p>Cucumber reuses the steps:</p>
 <p><a href="https://asciinema.org/a/UA6OiZWHW9RfXZ2wFSGXbdrqe"><img src="https://asciinema.org/a/UA6OiZWHW9RfXZ2wFSGXbdrqe.svg" alt="Steps reused between two scenarious" /></a></p>
-<p>A contrived example, but this demonstrates that steps can be reused as long as they are sufficiently precise in both their description and implementation. If, for example, the wording for our &quot;Then&quot; step was &quot;The cat is no longer hungry&quot;, it'd imply something about the expected initial state, when that is not the purpose of a &quot;Then&quot; step, but rather of the &quot;Given&quot; step.</p>
+<p>A contrived example, but this demonstrates that steps can be reused as long as they are sufficiently precise in both their description and implementation. If, for example, the wording for our <code>Then</code> step was <code>The cat is no longer hungry</code>, it'd imply something about the expected initial state, when that is not the purpose of a <code>Then</code> step, but rather of the <code>Given</code> step.</p>
 <p>Full example so far:</p>
 <pre><pre class="playground"><code class="language-rust">use std::convert::Infallible;
 
